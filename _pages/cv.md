@@ -13,10 +13,6 @@ Education
 ======
 * B.S. in Huazhong University of Science and Technology, 2013-2017
 * M.S. in Huazhong University of Science and Technology, 2017-2020
-  
-Skills
-======
-* Programming
 
 Publications
 ======
