@@ -8,8 +8,8 @@ redirect_from:
   - /about.html
 ---
 
-Brief Biography
-======   
+### Brief Biography
+
 I am currently a Ph.D student in [Department of Computer Science and Engineering](https://www.cse.ust.hk/) 
 at [HKUST](https://www.ust.hk/home).
 My supervisor is Prof. [Dan Xu](https://www.danxurgb.net/). 
