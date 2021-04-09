@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "This is a personal website of MiZhenxing"
+title: "This is a personal website of Zhenxing Mi"
 excerpt: "About me"
 author_profile: true
 redirect_from: 

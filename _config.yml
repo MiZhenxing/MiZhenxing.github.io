@@ -7,10 +7,10 @@
 
 # Site Settings
 locale                   : "zh-CN"
-title                    : "密振兴 MiZhenxing"
+title                    : "密振兴 Zhenxing Mi"
 title_separator          : "-"
-name                     : &name "密振兴 MiZhenxing"
-description              : &description "密振兴的个人主页，Homepage of MiZhenxing"
+name                     : &name "密振兴 Zhenxing Mi"
+description              : &description "密振兴的个人主页，Homepage of Zhenxing Mi"
 url                      : https://mizhenxing.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "MiZhenxing/MiZhenxing.github.io"
@@ -80,7 +80,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "密振兴 MiZhenxing"
+  name             : "密振兴 Zhenxing Mi"
   avatar           : "luoxiaohei.jpg"
   bio              : "No biography"
   location         : "China"
