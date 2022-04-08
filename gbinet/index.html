@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>mip-NeRF</title>
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Ⓜ️</text></svg>">
+    <title>GBi-Net</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +20,7 @@
     <meta property="og:image:width" content="682">
     <meta property="og:image:height" content="682">
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jonbarron.info/mipnerf/"/>
+    <meta property="og:url" content="https://mizhenxing.github.io/gbinet"/>
     <meta property="og:title" content="mip-NeRF" />
     <meta property="og:description" content="Project page for Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields." />
 
@@ -53,9 +54,10 @@
     <div class="container" id="main">
         <div class="row">
             <h2 class="col-md-12 text-center">
-                <b>Mip-NeRF</b>: A Multiscale Representation <br> for Anti-Aliasing Neural Radiance Fields</br> 
+                <!-- <b>GBi-Net</b>: A Multiscale Representation <br> for Anti-Aliasing Neural Radiance Fields</br>  -->
+                Generalized Binary Search Network <br> for Highly-Efficient Multi-View Stereo </br>
                 <small>
-                    ICCV 2021 (Oral, Best Paper Honorable Mention)
+                    CVPR 2022
                 </small>
             </h2>
         </div>
@@ -63,40 +65,22 @@
             <div class="col-md-12 text-center">
                 <ul class="list-inline">
                     <li>
-                        <a href="https://jonbarron.info/">
-                          Jonathan T. Barron
+                        <a href="https://mizhenxing.github.io/">
+                          Zhenxing Mi
                         </a>
-                        </br>Google
+                        </br>HKUST
                     </li>
                     <li>
-                        <a href="http://bmild.github.io/">
-                            Ben Mildenhall
+                        <a href="https://dchang-kilian.netlify.app/">
+                          Di Chang
                         </a>
-                        </br>Google
+                        </br>HKUST
                     </li>
                     <li>
-                        <a href="http://matthewtancik.com/">
-                          Matthew Tancik
+                        <a href="https://www.danxurgb.net/">
+                          Dan Xu
                         </a>
-                        </br>UC Berkeley
-                    </li><br>
-                    <li>
-                        <a href="https://phogzone.com/">
-                          Peter Hedman
-                        </a>
-                        </br>Google
-                    </li>
-                    <li>
-                        <a href="http://www.ricardomartinbrualla.com/">
-                          Ricardo Martin-Brualla
-                        </a>
-                        </br>Google
-                    </li>
-                    <li>
-                        <a href="https://pratulsrinivasan.github.io/">
-                          Pratul P. Srinivasan
-                        </a>
-                        </br>Google
+                        </br>HKUST
                     </li>
                 </ul>
             </div>
@@ -107,19 +91,19 @@
                 <div class="col-md-4 col-md-offset-4 text-center">
                     <ul class="nav nav-pills nav-justified">
                         <li>
-                            <a href="https://arxiv.org/abs/2103.13415">
-                            <image src="img/mip_paper_image.jpg" height="60px">
-                                <h4><strong>Paper</strong></h4>
+                            <a href="https://arxiv.org/abs/2112.02338">
+                            <image src="img/arxiv-logo.png" height="60px">
+                                <h4><strong>Arxiv</strong></h4>
                             </a>
                         </li>
                         <li>
-                            <a href="https://youtu.be/EpH175PY1A0">
+                            <a href="">
                             <image src="img/youtube_icon.png" height="60px">
                                 <h4><strong>Video</strong></h4>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/google/mipnerf">
+                            <a href="https://github.com/MiZhenxing/GBi-Net">
                             <image src="img/github.png" height="60px">
                                 <h4><strong>Code</strong></h4>
                             </a>
@@ -135,18 +119,40 @@
                 <h3>
                     Abstract
                 </h3>
-                <image src="img/rays.png" class="img-responsive" alt="overview"><br>
+                <!-- <image src="img/pipeline26.png" class="img-responsive" alt="overview"><br> -->
+                <iframe src="img/pipelinemain.pdf" height="100%" width="100%" class="img-responsive" alt="overview"></iframe><br>
                 <p class="text-justify">
-The rendering procedure used by neural radiance fields (NeRF) samples a scene with a single ray per pixel and may therefore produce renderings that are excessively blurred or aliased when training or testing images observe scene content at different resolutions. The straightforward solution of supersampling by rendering with multiple rays per pixel is impractical for NeRF, because rendering each ray requires querying a multilayer perceptron hundreds of times. Our solution, which we call "mip-NeRF" (à la "mipmap"), extends NeRF to represent the scene at a continuously-valued scale.
-By efficiently rendering anti-aliased conical frustums instead of rays, mip-NeRF reduces objectionable aliasing artifacts and significantly improves NeRF's ability to represent fine details, while also being 7% faster than NeRF and half the size.
-Compared to NeRF, mip-NeRF reduces average error rates by 17% on the dataset presented with NeRF and by 60% on a challenging multiscale variant of that dataset that we present. mip-NeRF is also able to match the accuracy of a brute-force supersampled NeRF on our multiscale dataset while being 22x faster.
+                    Multi-view Stereo (MVS) with known camera parameters is essentially a 1D search
+                    problem within a valid depth range. Recent deep learning-based MVS methods
+                    typically densely sample depth hypotheses in the depth range, and then construct
+                    prohibitively memory-consuming 3D cost volumes for depth prediction. 
+                    Although coarse-to-fine sampling strategies alleviate this overhead issue 
+                    to a certain extent, the efficiency of MVS is still an open challenge. 
+                    In this work, we propose a novel method for highly efficient MVS that remarkably 
+                    decreases the memory footprint, meanwhile clearly advancing state-of-the-art depth 
+                    prediction performance. We investigate what a search strategy can be reasonably 
+                    optimal for MVS taking into account of both efficiency and effectiveness. 
+                    We first formulate MVS as a binary search problem, and accordingly propose a 
+                    generalized binary search network for MVS. Specifically, in each step, the depth 
+                    range is split into 2 bins with extra 1 error tolerance bin on both sides. 
+                    A classification is performed to identify which bin contains the true depth. 
+                    We also design three mechanisms to respectively handle classification errors, 
+                    deal with out-of-range samples and decrease the training memory. 
+                    The new formulation makes our method only sample a very small number 
+                    of depth hypotheses in each step, which is highly memory efficient, 
+                    and also greatly facilitates quick training convergence. 
+                    Experiments on competitive benchmarks show that our method achieves 
+                    state-of-the-art accuracy with much less memory. Particularly, 
+                    our method obtains an overall score of 0.289 on DTU dataset and 
+                    tops the first place on challenging Tanks and Temples advanced dataset 
+                    among all the learning-based methods. Our code will be released 
+                    at <a href="https://github.com/MiZhenxing/GBi-Net">GBi-Net</a>.
                 </p>
             </div>
         </div>
 
 
-
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
                     Video
@@ -157,7 +163,7 @@ Compared to NeRF, mip-NeRF reduces average error rates by 17% on the dataset pre
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         <div class="row">
@@ -278,14 +284,11 @@ Compared to NeRF, mip-NeRF reduces average error rates by 17% on the dataset pre
                 </h3>
                 <div class="form-group col-md-10 col-md-offset-1">
                     <textarea id="bibtex" class="form-control" readonly>
-@article{barron2021mipnerf,
-    title={Mip-NeRF: A Multiscale Representation 
-           for Anti-Aliasing Neural Radiance Fields},
-    author={Jonathan T. Barron and Ben Mildenhall and 
-            Matthew Tancik and Peter Hedman and 
-            Ricardo Martin-Brualla and Pratul P. Srinivasan},
-    journal={ICCV},
-    year={2021}
+@inproceedings{mi2021generalized,
+    title={Generalized Binary Search Network for Highly-Efficient Multi-View Stereo}, 
+    author={Zhenxing Mi and Di Chang and Dan Xu},
+    booktitle={CVPR},
+    year={2022}
 }</textarea>
                 </div>
             </div>
@@ -297,11 +300,12 @@ Compared to NeRF, mip-NeRF reduces average error rates by 17% on the dataset pre
                     Acknowledgements
                 </h3>
                 <p class="text-justify">
-                We thank Janne Kontkanen and David Salesin for their comments on the text, Paul Debevec for constructive discussions, and Boyang Deng for JaxNeRF. 
+                    This research is supported in part by the Early Career
+                    Scheme of the Research Grants Council (RGC) of the Hong
+                    Kong SAR under grant No. 26202321 and HKUST Startup
+                    Fund No. R9253.
                     <br>
-                MT is funded by an NSF Graduate Fellowship.
-                    <br>
-                The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                The website template was borrowed from <a href="https://jonbarron.info/">Jon Barron</a> <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>.
                 </p>
             </div>
         </div>
