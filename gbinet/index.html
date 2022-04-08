@@ -188,6 +188,8 @@
                 <p class="text-justify">
                     We use integrated positional encoding to train NeRF to generate anti-aliased renderings. Rather than casting an infinitesimal ray through each pixel, we instead cast a full 3D <em>cone</em>. For each queried point along a ray, we consider its associated 3D conical frustum. Two different cameras viewing the same point in space may result in vastly different conical frustums, as illustrated here in 2D:
                 </p>
+                <image src="img/supp_depthmap10.png" class="img-responsive" alt="overview"><br>
+
             </div>
         </div>
             
@@ -199,6 +201,21 @@
                     Results on DTU
                 </h3>
                 <image src="img/dtu_points_compare.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    We train NeRF and mip-NeRF on a dataset with images at four different resolutions. Normal NeRF (left) is not capable of learning to represent the same scene at multiple levels of detail, with blurring in close-up shots and aliasing in low resolution views, while mip-NeRF (right) both preserves sharp details in close-ups and correctly renders the zoomed-out images.
+                </p>
+                <image src="img/supp_dtu_pt2.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Results on Tanksandtemples
+                </h3>
+                <image src="img/supp_tanks_pt1.png" class="img-responsive" alt="overview"><br>
                 <p class="text-justify">
                     We train NeRF and mip-NeRF on a dataset with images at four different resolutions. Normal NeRF (left) is not capable of learning to represent the same scene at multiple levels of detail, with blurring in close-up shots and aliasing in low resolution views, while mip-NeRF (right) both preserves sharp details in close-ups and correctly renders the zoomed-out images.
                 </p>
