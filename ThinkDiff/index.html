@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="I Think, Therefore I Diffuse: Enabling Multimodal In-Context Reasoning in Diffusion Models.">
+  <meta name="keywords" content="In-context reasoning, Diffusion model, Multimodal generation, Vision-language training">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I Think, Therefore I Diffuse: Enabling Multimodal In-Context Reasoning in Diffusion Models</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/flux_thinkdiff_4_0.png">
+  <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Ⓜ️</text></svg>"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+        <div class="item item-fullbody">
+          <img src="static/images/flux_thinkdiff_4_0.png" alt="Framework" style="width: 196px; height: auto; display: block; margin: 0 auto;" />
+        </div>
+          <h1 class="title is-1 publication-title">I Think, Therefore I Diffuse: <br> Enabling Multimodal In-Context Reasoning in Diffusion Models</h1>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://mizhenxing.github.io" target="_blank">Zhenxing Mi</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://wangkua1.github.io" target="_blank">Kuan-Chieh Wang</a><sup>2</sup>,</span>
+                <span class="author-block">
+                  <a href="https://guochengqian.github.io" target="_blank">Guocheng Qian</a><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://sites.google.com/site/yhrspace" target="_blank">Hanrong Ye</a><sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://github.com/rt219" target="_blank">Runtao Liu</a><sup>1</sup>,
+                </span>
+                <br> 
+                <span class="author-block">
+                  <a href="https://stulyakov.com" target="_blank">Sergey Tulyakov</a><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://kfiraberman.github.io" target="_blank">Kfir Aberman</a><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://www.danxurgb.net" target="_blank">Dan Xu</a><sup>1</sup>
+                </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>HKUST,</span>
+            <span class="author-block"><sup>2</sup>Snap Inc.</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/MiZhenxing/ThinkDiff"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        
+        <div class="item item-fullbody">
+          <img src="static/images/teaser_image_1.png" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+        </div>
+        <div class="item item-fullbody">
+          <img src="static/images/teaser_image_5.png" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+        </div>
+        <div class="item item-steve">
+          <img src="static/images/dreambench_plus_style_11.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dreambench_plus_style_11_panda_guitar_1.mp4"
+                    type="video/mp4">
+          </video>
+          </div>
+
+
+        <div class="item item-fullbody">
+          <img src="static/images/teaser_image_4.png" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+        </div>
+
+        <div class="item item-fullbody">
+          <img src="static/images/teaser_image_2.png" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+        </div>
+
+          <div class="item item-fullbody">
+            <img src="static/images/minecraft.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+            <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/minecraft_elderly_gentleman.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <img src="static/images/teaser_arxiv.png" alt="Framework" class="blend-img-background center-image"/>
+          <br>
+          <br>
+          <p>
+            This paper presents <b>ThinkDiff</b>, a novel alignment paradigm that enables multimodal in-context understanding and reasoning capabilities in text-to-image diffusion models by integrating the capabilities of vision-language models (VLMs). Directly aligning VLMs with diffusion decoders via diffusion loss requires complex and costly reasoning-based data pairs with multimodal inputs and image outputs. Instead, ThinkDiff leverages vision-language training as a proxy task, aligning VLMs to a large language model (LLM) decoder. This proxy task is feasible because the LLM <b>decoder</b> shares the same input feature space as diffusion <b>decoders</b> that use the corresponding LLM <b>encoder</b> for text embedding. As a result, alignment with diffusion decoders can be achieved by alignment with the LLM decoder. ThinkDiff effectively transfers multimodal in-context understanding and reasoning capabilities from VLMs to diffusion models, eliminating the need for complex reasoning-based multimodal datasets by using only readily available image-text pairs for training. Experiment results demonstrate that ThinkDiff significantly improves performance on the challenging CoBSAT benchmark for multimodal in-context reasoning generation, raising the best accuracy from 19.2% to 46.3%, with only 5 hours of training on 4 A100 GPUs. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+</section>
+
+
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <div class="level-set has-text-justified">
+            <h2 class="title">Framework</h2>
+            <p>
+             In this paper, we propose <b>ThinkDiff</b>, a novel alignment paradigm that leverages vision-language training for diffusion alignment. Instead of directly aligning VLMs with diffusion decoders, this proxy aligns VLMs with large language model (LLM) decoders, only requiring widely available image-text pairs for training and eliminating the need for complex multimodal reasoning dataset.
+          </p>
+          <br>
+        </div>
+<img src="static/images/framework.png" alt="Framework" class="blend-img-background center-image"/>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <div class="level-set has-text-justified">
+            <h2 class="title">General idea</h2>
+            <p>
+              Recent advanced diffusion models such as FLUX, Stable Diffusion 3 and PixArt-α adopt the encoders of encoder-decoder LLMs, T5, as diffusion models' prompt encoders. This shared text encoder establishes a shared input feature space for both diffusion decoders and LLM decoders. 
+          </p>
+          <br>
+        </div>
+<!-- <img src="static/images/encoder_decoder_llm.png" alt="Framework" class="blend-img-background center-image" /> -->
+<img src="static/images/encoder_decoder_llm.png" alt="Framework" style="width: 512px; height: auto; display: block; margin: 0 auto;" />
+
+<p>
+  <br>
+  Therefore, aligning with diffusion decoders can be accomplished through the proxy task of aligning with the LLM decoders through vision-language training.
+  <br>
+  <br>
+  The below figure illustrates the difference between reconstruction-based diffusion finetuning and ThinkDiff. <br>
+  <b>(a)</b> Reconstruction-based diffusion finetuning integrates image features using a diffusion loss, focusing on pixel-level image reconstruction without reasoning. <br>
+  <b>(b)</b> ThinkDiff aligns a VLM to an LLM decoder by vision-language training on image-caption datasets. In inference (dotted lines), it transfers multimodal in-context reasoning capabilities from the VLM to a diffusion decoder.
+  <br>
+</p>
+<img src="static/images/arch_compare.png" alt="Framework" style="width: 512px; height: auto; display: block; margin: 0 auto;" />
+
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <div class="level-set has-text-justified">
+
+            <div style="display: flex; align-items: center;">
+              <!-- Image -->
+              <img src="static/images/flux_thinkdiff_4_0.png" alt="Framework" style="width: 64px; height: auto; margin-right: 20px;" />
+              
+              <!-- Title -->
+              <h2 class="title">Multimodal in-conetxt reseasoning generation</h2>
+            </div>
+
+            <!-- <h2 class="title">Multimodal in-conetxt reseasoning generation</h2> -->
+            <p>
+              Given two images and three words, ThinkDiff-LVLM accurately captures the implicit logic in the inputs and generates an image corresponding to the third word while retaining common attributes from the input images. In contrast, compared methods often fail to interpret the inputs correctly, leading to inaccurate and lower-quality results. Ground-truth text is provided for reference.
+          </p>
+          <br>
+<img src="static/images/appendix_reasoning_shot2_compare.png" alt="Framework" class="blend-img-background center-image"/>
+          <br>
+          <br>
+          <br>
+          <br>
+          <img src="static/images/appendix_reasoning_shot2.png" alt="Framework" class="blend-img-background center-image"/>
+        </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <div class="level-set has-text-justified">
+
+
+            <div style="display: flex; align-items: center;">
+              <!-- Image -->
+              <img src="static/images/flux_thinkdiff_4_0.png" alt="Framework" style="width: 64px; height: auto; margin-right: 20px;" />
+              
+              <!-- Title -->
+              <h2 class="title">Multimodal in-conetxt composition</h2>
+            </div>
+
+
+            <!-- <h2 class="title">Multimodal in-conetxt composition</h2> -->
+            <p>
+              <b>ThinkDiff-CLIP</b>, a novel alignment paradigm that leverages vision-language training for diffusion alignment. Instead of directly aligning VLMs with diffusion decoders, this proxy task aligns VLMs with large language model (LLM) decoders, only requiring widely available image-text pairs for training and eliminating the need for complex multimodal reasoning dataset.
+          </p>
+          <h3 class="title">🌟Single image + text for video</h3>
+
+
+          <p>
+            <b>ThinkDiff-CLIP</b> is agnostic to diffusion decoders, and is versatile for integrating models like CogVideoX-5B, a text-to-video diffusion model. A background image is fed to the vision encoder and aligner network, along with a text prompt, and then to CogVideoX decoder. The model generates a coherent video by seamlessly integrating images and text. This shows ThinkDiff-CLIP's flexibility and broad applicability for multimodal generation tasks.
+          </p>
+
+
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item item-steve">
+              <img src="static/images/dreambench_plus_style_11.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+              <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/dreambench_plus_style_11_panda_guitar_1.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-fullbody">
+              <img src="static/images/minecraft.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/minecraft_elderly_gentleman.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+    
+            <div class="item item-fullbody">
+              <img src="static/images/dreambench_plus_style_08.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/dreambench_plus_style_08_white_vintage_SUV.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-chair-tp">
+              <img src="static/images/dreambench_plus_style_02.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+              <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/dreambench_plus_style_02_white_vintage_SUV.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-shiba">
+              <img src="static/images/dreambench_plus_style_11.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+              <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/dreambench_plus_style_11_elderly_gentleman.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+    
+            <div class="item item-fullbody">
+              <img src="static/images/dreambench_plus_style_08.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/dreambench_plus_style_08_man_jogging.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-fullbody">
+              <img src="static/images/StyleCrafter_anime_1.png" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/StyleCrafter_anime_1_elderly_gentleman.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          
+          <h3 class="title">🌟Single image + text</h3>
+          <p>
+          Figures below show results with a single image as input. FLUX Ultra, possibly finetuned by reconstruction-based diffusion training, performs well in "copy-pasting" the input image (FLUX Ultra + I), but struggles to maintain coherence when an additional <b>text</b> prompt is included (FLUX Ultra + I + T). In contrast, ThinkDiff-CLIP excels at understanding the semantic details of the input image and effectively integrates both image and text to generate logically coherent outputs (Ours + I and Ours + I + T). 
+          </p>
+
+          <img src="static/images/appendix_multimodal_vision_website.png" alt="Framework" class="blend-img-background center-image"/>
+          <br>
+
+          <h3 class="title">🌟Two images</h3>
+
+          <p>
+            ThinkDiff-CLIP is flexible and can handle multiple images and text prompts. It can combine semantic details from two images in a reasonable and coherent manner. 
+            </p>
+
+          <br>
+          <br>
+          <img src="static/images/appendix_multimodal_vision_only_2I_website.png" alt="Framework" class="blend-img-background center-image"/>
+
+          <h3 class="title">🌟Two images + text</h3>
+
+          <p>
+            With an additional text prompt (Ours + 2I + T), ThinkDiff-CLIP effectively incorporates the prompt into the generation. </p>
+          <img src="static/images/multimodal_vision_2I_arxiv.png" alt="Framework" class="blend-img-background center-image"/>
+
+
+          <br>
+
+          </div>
+          </div>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <img src="static/images/dreambench_plus_style_11.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dreambench_plus_style_11_panda_guitar_1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <img src="static/images/minecraft.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/minecraft_elderly_gentleman.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-fullbody">
+          <img src="static/images/dreambench_plus_style_08.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dreambench_plus_style_08_white_vintage_SUV.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <img src="static/images/dreambench_plus_style_02.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dreambench_plus_style_02_white_vintage_SUV.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <img src="static/images/dreambench_plus_style_11.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dreambench_plus_style_11_elderly_gentleman.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-fullbody">
+          <img src="static/images/dreambench_plus_style_08.jpg" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dreambench_plus_style_08_man_jogging.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <img src="static/images/StyleCrafter_anime_1.png" alt="Framework" style="width: auto; height: auto; display: block; margin: 0 auto;" />
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/StyleCrafter_anime_1_elderly_gentleman.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+
+@article{mi2025thinkdiff,
+  title={I Think, Therefore I Diffuse: Enabling Multimodal In-Context Reasoning in Diffusion Models},
+  author={Mi, Zhenxing and Wang, Kuan-Chieh and Qian, Guocheng and Ye, Hanrong and Liu, Runtao and Tulyakov, Sergey and Aberman, Kfir and Xu, Dan},
+  journal={arXiv preprint arXiv:},
+  year={2025}
+}
+
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+          <p>
+            This page was built using <a href="https://nerfies.github.io" target="_blank">Nerfies</a>.
+          </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
