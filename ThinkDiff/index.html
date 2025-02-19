@@ -252,6 +252,23 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
+        
+
+      <h2 class="title is-3">TL;DR</h2>
+
+
+      <div class="content has-text-justified">
+        <p>
+        1. Aligning VLM to an <b>LLM</b> decoder, instead of a <b>diffusion</b> decoder.
+          <br>
+        2. It's based on the finding that the LLM decoder shares the same input space with the diffusion decoder.
+          <br>
+        3. ThinkDiff-LVLM aligns deep features of LVLM's <b>generated</b> tokens, instead of deep features of LVLM's <b>input</b> tokens, to the decoders.
+          <br>
+        4. This transfers the reasoning capabilities to diffusion decoders. (<b>Generated</b> tokens are answers while <b>input</b> tokens are only questions.)
+        </p>
+      </div>
+
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <img src="static/images/teaser_arxiv.jpeg" alt="Framework" class="blend-img-background center-image"/>
