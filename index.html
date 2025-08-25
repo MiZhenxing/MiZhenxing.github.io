@@ -180,6 +180,56 @@
               <!-- <div id='ssrnet_anim' class='hidden'>
                 <a href=""><img src="images/ECCV2012_small.gif"></a>
               </div> -->
+              <div id='thinkdiff_still'><img src="images/switchnerf_plus_teaser.png" width="200"></div>
+              <script type="text/javascript">
+                function switchnerf_start() {
+                  document.getElementById('eccv12_anim').style.display = 'inline';
+                  document.getElementById('eccv12_still').style.display = 'none';
+                }
+
+                function switchnerf_stop() {
+                  document.getElementById('eccv12_anim').style.display = 'none';
+                  document.getElementById('eccv12_still').style.display = 'inline';
+                }
+                switchnerf_stop()
+              </script>
+            </td>
+            <td width="75%" valign="middle">
+              <a href="switchnerf">
+                <div id='thinkdiff_still_1'> <papertitle>Learning Heterogeneous Mixture of Scene Experts for Large-scale Neural Radiance Fields</papertitle></div>
+              </a>
+
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <strong>Zhenxing Mi</strong>,</span>
+                  <span class="author-block">
+                   Ping Yin,</span>
+                  <span class="author-block">
+                    Xue Xiao,</span>
+                    <span class="author-block">
+                      <a href="https://www.danxurgb.net" target="_blank">Dan Xu</a>
+                    </span>
+              </div>
+
+              <em>TPAMI</em>, 2025
+              <br>
+              
+              <a href="switchnerf">project page & demo</a> /
+              <a href="https://openreview.net/forum?id=PQ2zoIZqvm">arXiv</a> /
+              <a href="https://github.com/MiZhenxing/Switch-NeRF">code</a>
+              <!-- <a href="data/BarronMalikECCV2012.bib">bibtex</a> / -->
+              <!-- <a href="https://drive.google.com/file/d/12x8mhqpFsA6p0u6ZQW-ieRKF8hlQBKKe/view?usp=sharing">poster</a> / -->
+              <!-- <a href="http://www.youtube.com/watch?v=NnePYprvFvA">video</a> -->
+              <!-- <p>This paper is subsumed by <a href="#SIRFS">SIRFS</a>.</p> -->
+            </td>
+          </tr>
+
+          <tr onmouseout="switchnerf_stop()" onmouseover="switchnerf_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <!-- <div id='ssrnet_anim' class='hidden'>
+                <a href=""><img src="images/ECCV2012_small.gif"></a>
+              </div> -->
               <div id='thinkdiff_still'><img src="ThinkDiff/static/images/teaser_arxiv_left.png" width="200"></div>
               <script type="text/javascript">
                 function switchnerf_start() {
@@ -241,8 +291,6 @@
             </td>
           </tr>
 
-          <br>
-          <br>
           <tr onmouseout="switchnerf_stop()" onmouseover="switchnerf_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
               <!-- <div id='ssrnet_anim' class='hidden'>
