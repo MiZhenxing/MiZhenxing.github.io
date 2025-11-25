@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="One4D: Unified 4D Generation and Reconstruction via Decoupled LoRA Control">
+    <title>One4D: Unified 4D Generation and Reconstruction via Decoupled LoRA Control</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">One4D</div>
+        <ul class="nav-links">
+            <li><a href="#abstract">Abstract</a></li>
+            <li><a href="#method">Method</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#bibtex">BibTeX</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="https://github.com/MiZhenxing/One4D" class="btn-outline">
+                <i class="fab fa-github"></i> View Code
+            </a>
+        </div>
+    </nav>
+
+
+<header class="hero">
+        <div class="hero-content">
+            <h1>One4D</h1>
+            <p class="subtitle">Unified 4D Generation and Reconstruction via Decoupled LoRA Control</p>
+            
+            <div class="authors">
+                <a href="https://mizhenxing.github.io" target="_blank"><span>Zhenxing Mi</span></a>,
+                <a href="https://w-ted.github.io" target="_blank"><span>Yuxin Wang</span></a>,
+                <a href="https://www.danxurgb.net" target="_blank"><span>Dan Xu</span></a>
+                <br>
+                <span class="institution">The Hong Kong University of Science and Technology (HKUST)</span>
+            </div>
+
+            <div class="cta-group">
+                <a href="https://arxiv.org/abs/2511.18922" class="btn-primary"><i class="ai ai-arxiv"></i> Arxiv</a>
+                <a href="https://arxiv.org/pdf/2511.18922" class="btn-primary"><i class="fas fa-file-pdf"></i> Read Paper</a>
+                <a href="https://arxiv.org/html/2511.18922v1" class="btn-primary"><i class="ai ai-arxiv"></i> HTML</a>
+                <a href="https://github.com/MiZhenxing/One4D" class="btn-primary"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#" class="btn-primary">🤗 Hugging Face Paper</a>
+
+
+
+            </div>
+
+            <div class="hero-showcase-video">
+                <video autoplay muted loop playsinline>
+                    <source src="./assets/videos/cut_1.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        
+        <div class="hero-background-container">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="./assets/videos/cut_1.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+    </header>
+
+    <section id="abstract" class="intro">
+        <div class="container">
+            <h2>Unified Framework</h2>
+            <div class="abstract-text">
+                <p>
+                    One4D is a unified framework for <strong>4D generation and reconstruction</strong> that can seamlessly transition between 4D generation from a <strong>single image</strong>, 4D reconstruction from a <strong>full video</strong>, and mixed generation and reconstruction from <strong>sparse frames</strong> via <strong>Unified Masked Conditioning (UMC)</strong>. With <strong>Decoupled LoRA Control (DLC)</strong>, which employs two modality-specific LoRA adapters to form decoupled computation branches for RGB frames and pointmaps, connected by lightweight, zero-initialized control links that gradually learn mutual pixel-level consistency, One4D produces high-quality RGB frames and accurate pointmaps across both generation and reconstruction tasks. 
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="method" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Methodology</h2>
+            </div>
+            
+            <div class="diagram-container">
+                <img src="./assets/pics/framework.png" alt="One4D Framework" class="responsive-img">
+                <p class="caption">Figure 1: The One4D Unified Framework architecture.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="icon">🎛️</div>
+                    <h4>Unified Masked Conditioning</h4>
+                    <p>Enables seamlessly transition between 4D generation from a <strong>single image</strong>, 4D reconstruction from a <strong>full video</strong>, and mixed generation and reconstruction from <strong>sparse frames</strong> using a single unified model.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🧩</div>
+                    <h4>Decoupled LoRA Control</h4>
+                    <p>Decouples RGB and XYZ computation to minimize interference while maintaining pixel-wise cross-modal control.</p>
+                </div>
+            </div>
+
+             <div class="diagram-container" style="margin-top: 50px;">
+                <img src="./assets/pics/arch_compare.png" alt="Architecture Comparison" class="responsive-img">
+                <p class="caption">Figure 2: Comparison of Decoupled LoRA Control against other architectures.</p>
+            </div>
+        </div>
+    </section>
+<section id="results" class="showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Results Showcase</h2>
+            </div>
+            
+            <div class="showcase-item">
+                <div class="desc-box">
+                    <h3>Single image to 4D</h3>
+                    <p>Generating a consistent 4D scene from a single input image, ensuring high-quality RGB frames and consistent geometry for the entire 4D output.</p>
+                </div>
+                
+                <div class="gallery-wrapper">
+                    <div class="main-video-container">
+                        <video id="vid-single" autoplay muted loop playsinline class="main-video">
+                            <source src="./assets/videos/cut_2.mp4" type="video/mp4">
+                        </video>
+                        <!-- <div class="tag">Single Image → 4D</div> -->
+                    </div>
+                    
+                    <div class="thumbnail-strip-container"> <div class="thumbnail-strip">
+                        <div class="thumb-item active" data-src="./assets/videos/cut_2.mp4" data-target="vid-single">
+                            <video muted loop playsinline src="./assets/videos/cut_2.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_6.mp4" data-target="vid-single">
+                            <video muted loop playsinline src="./assets/videos/cut_6.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_3.mp4" data-target="vid-single">
+                            <video muted loop playsinline src="./assets/videos/cut_3.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_4.mp4" data-target="vid-single">
+                            <video muted loop playsinline src="./assets/videos/cut_4.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_5.mp4" data-target="vid-single">
+                            <video muted loop playsinline src="./assets/videos/cut_5.mp4"></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="showcase-item">
+                <div class="desc-box">
+                    <h3>Sparse frames to 4D</h3>
+                    <p>Reconstructing the 4D scene given only a few sparse frames. One4D interpolates the missing information utilizing the Unified Masked Conditioning.</p>
+                </div>
+
+                <div class="gallery-wrapper">
+                    <div class="main-video-container">
+                        <video id="vid-sparse" autoplay muted loop playsinline class="main-video">
+                            <source src="./assets/videos/cut_7.mp4" type="video/mp4">
+                        </video>
+                        <!-- <div class="tag">Sparse Frames → 4D</div> -->
+                    </div>
+
+                    <div class="thumbnail-strip-container"> <div class="thumbnail-strip">
+                        <div class="thumb-item active" data-src="./assets/videos/cut_7.mp4" data-target="vid-sparse">
+                            <video muted loop playsinline src="./assets/videos/cut_7.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_8.mp4" data-target="vid-sparse">
+                            <video muted loop playsinline src="./assets/videos/cut_8.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_11.mp4" data-target="vid-sparse">
+                            <video muted loop playsinline src="./assets/videos/cut_11.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_12.mp4" data-target="vid-sparse">
+                            <video muted loop playsinline src="./assets/videos/cut_12.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_13.mp4" data-target="vid-sparse">
+                            <video muted loop playsinline src="./assets/videos/cut_13.mp4"></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="showcase-item">
+                <div class="desc-box">
+                    <h3>Full video to 4D</h3>
+                    <p>High-fidelity reconstruction from a full video input, ensuring temporal consistency and accurate geometry estimation.</p>
+                </div>
+
+                <div class="gallery-wrapper">
+                    <div class="main-video-container">
+                        <video id="vid-full" autoplay muted loop playsinline class="main-video">
+                            <source src="./assets/videos/cut_9.mp4" type="video/mp4">
+                        </video>
+                        <!-- <div class="tag">Full Video → 4D</div> -->
+                    </div>
+
+                    <div class="thumbnail-strip-container"> <div class="thumbnail-strip">
+                        <div class="thumb-item active" data-src="./assets/videos/cut_9.mp4" data-target="vid-full">
+                            <video muted loop playsinline src="./assets/videos/cut_9.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_10.mp4" data-target="vid-full">
+                            <video muted loop playsinline src="./assets/videos/cut_10.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_14.mp4" data-target="vid-full">
+                            <video muted loop playsinline src="./assets/videos/cut_14.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_15.mp4" data-target="vid-full">
+                            <video muted loop playsinline src="./assets/videos/cut_15.mp4"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_16.mp4" data-target="vid-full">
+                            <video muted loop playsinline src="./assets/videos/cut_16.mp4"></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="bibtex" class="bibtex-section">
+        <div class="container">
+            <h3>BibTeX</h3>
+            <pre><code>@article{mione4d2025,
+  title={One4D: Unified 4D Generation and Reconstruction via Decoupled LoRA Control},
+  author={Mi, Zhenxing and Wang, Yuxin and Xu, Dan},
+  journal={arXiv preprint arXiv:2511.18922},
+  year={2025}
+}</code></pre>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">One4D</div>
+                <div class="footer-links">
+                    <a href="https://hkust.edu.hk/">HKUST</a>
+                    <a href="https://www.danxurgb.net/">Lab Page</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
