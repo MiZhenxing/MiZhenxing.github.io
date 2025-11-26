@@ -1,12 +1,10 @@
 :root {
-    --bg-color: #ffffff;
-    --card-bg: #ffffff;
-    --text-main: #202124;  /* Deep dark gray for headings */
-    --text-muted: #5f6368; /* Medium gray for body text */
-    --accent-blue: #1a73e8; /* Google Blue */
-    --accent-gradient: linear-gradient(90deg, #ff073a, #9c27b0);
-    --border-color: #e0e0e0;
-    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --bg-color: #0e0e0e;
+    --card-bg: #1a1a1a;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --accent-blue: #4285f4;
+    --accent-gradient: linear-gradient(90deg, #ff073a, #9c27b0); /* Matched your 'grad2' style */
     --font-stack: 'DM Sans', sans-serif;
 }
 
@@ -28,21 +26,21 @@ body {
     position: fixed;
     width: 100%;
     top: 0;
-    background: rgba(255, 255, 255, 0.9); /* White transparent */
+    background: rgba(14, 14, 14, 0.9);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #333;
 }
 
-.logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; color: var(--text-main); }
+.logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; }
 
 .nav-links { display: flex; gap: 30px; list-style: none; }
-.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
-.nav-links a:hover { color: var(--accent-blue); }
+.nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.95rem; opacity: 0.8; transition: opacity 0.3s; }
+.nav-links a:hover { opacity: 1; }
 
 .btn-outline {
     background: transparent;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--text-main);
     color: var(--text-main);
     padding: 8px 16px;
     border-radius: 20px;
@@ -50,22 +48,18 @@ body {
     font-size: 0.9rem;
     transition: 0.3s;
 }
-.btn-outline:hover { 
-    background: var(--text-main); 
-    color: #fff; 
-    border-color: var(--text-main);
-}
-
-/* Hero Section */
+.btn-outline:hover { background: white; color: black; }
+/* Hero Section Updates */
 .hero {
+    /* Changed from height: 100vh to min-height to accommodate the new video */
     min-height: 100vh; 
     display: flex;
-    align-items: center; 
+    align-items: center; /* Center vertically */
     justify-content: center;
     text-align: center;
     position: relative;
     overflow: hidden;
-    padding-top: 120px; 
+    padding-top: 120px; /* More top padding to clear navbar */
     padding-bottom: 60px;
 }
 
@@ -73,21 +67,23 @@ body {
     z-index: 2;
     max-width: 900px;
     padding: 20px;
+    /* Flex column to stack elements nicely */
     display: flex;
     flex-direction: column;
     align-items: center; 
 }
 
-/* Foreground Video in Hero */
+/* ... (keep badge, h1, subtitle, authors, cta-group styles the same) ... */
+
+/* NEW: Styles for the foreground video */
 .hero-showcase-video {
     margin-top: 50px;
     width: 100%;
-    max-width: 800px; 
+    max-width: 800px; /* Limit width so it doesn't touch edges */
     border-radius: 16px;
     overflow: hidden;
-    /* Soft shadow instead of dark deep shadow */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); 
-    border: 1px solid rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); /* Deep shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
     background: #000;
 }
 
@@ -96,33 +92,16 @@ body {
     display: block;
 }
 
-/* Background Video Container */
+/* Background Video Container (Ensure this stays behind) */
 .hero-background-container {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: 1;
-    pointer-events: none; 
-}
-
-.hero-video {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    /* Increased from 0.15 to 0.4 */
-    opacity: 0.4; 
-    /* Removed grayscale so original colors show */
-    filter: none; 
-}
-
-.video-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    /* Reduced white overlay opacity from 0.8 to 0.6 so more video shines through */
-    background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,1));
+    pointer-events: none; /* Let clicks pass through to content */
 }
 
 .badge {
-    background: rgba(0,0,0,0.05); /* Light gray badge */
-    color: var(--text-muted);
+    background: rgba(255,255,255,0.1);
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
@@ -130,7 +109,6 @@ body {
     letter-spacing: 1px;
     margin-bottom: 20px;
     display: inline-block;
-    border: 1px solid var(--border-color);
 }
 
 h1 {
@@ -140,11 +118,9 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1.1;
-    /* Fallback for readability if gradient fails */
-    color: var(--text-main);
 }
 
-.subtitle { font-size: 2rem; color: var(--text-muted); margin-bottom: 20px; font-weight: 400; }
+.subtitle { font-size: 1.5rem; color: var(--text-main); margin-bottom: 20px; }
 
 .authors {
     font-size: 1.1rem;
@@ -153,100 +129,152 @@ h1 {
 }
 .institution { font-size: 0.95rem; color: var(--text-muted); }
 
+/* Styling for Author Links */
 .authors a {
-    color: var(--accent-blue);
-    text-decoration: none; 
-    font-weight: 500; 
-    transition: opacity 0.3s;
+    color: var(--text-main); /* Inherit main text color */
+    text-decoration: none; /* Remove underline */
+    font-weight: 500; /* Ensure names stand out */
+    transition: color 0.3s;
 }
 
 .authors a:hover {
-    opacity: 0.8;
-    text-decoration: underline; 
+    color: var(--accent-blue); /* Highlight link on hover */
+    text-decoration: underline; /* Add underline on hover */
 }
 
-.cta-group { display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;}
+.cta-group { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
 
-.btn-primary {
-    /* background: var(--text-main); */
-    background: #fff; /* Black button */
-    color: #000;
+.btn-primary, .btn-secondary {
     padding: 12px 30px;
     border-radius: 30px;
     font-weight: 700;
     text-decoration: none;
     transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-.btn-primary:hover { 
-    background: var(--accent-blue); 
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(26, 115, 232, 0.2);
+
+.btn-primary { background: var(--text-main); color: var(--bg-color); }
+.btn-primary:hover { opacity: 0.9; }
+.btn-secondary { background: rgba(255,255,255,0.1); color: var(--text-main); }
+.btn-secondary:hover { background: rgba(255,255,255,0.2); }
+
+/* Video Background */
+.hero-background-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+}
+.hero-video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.4; /* Dimmed for text readability */
+}
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(14,14,14,0.5), rgba(14,14,14,1));
 }
 
 /* Sections */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 .intro { padding: 80px 0; text-align: center; }
-.abstract-text { max-width: 800px; margin: 0 auto; color: var(--text-muted); text-align: justify; font-size: 1.05rem;}
+.lead { font-size: 1.8rem; max-width: 900px; margin: 0 auto 30px; }
+.abstract-text { max-width: 800px; margin: 0 auto; color: var(--text-muted); text-align: justify; }
 
 /* Features & Diagrams */
 .features { padding: 50px 0 100px; }
-.section-header { margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
-
-h2 { color: var(--text-main); }
-
+.section-header { margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 20px; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-
-.card { 
-    background: var(--card-bg); 
-    padding: 30px; 
-    border-radius: 16px; 
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid var(--border-color);
-}
-.card:hover { 
-    transform: translateY(-5px); 
-    box-shadow: var(--card-shadow);
-}
+.card { background: var(--card-bg); padding: 30px; border-radius: 16px; transition: transform 0.3s; }
+.card:hover { transform: translateY(-5px); }
 .card .icon { font-size: 2rem; margin-bottom: 15px; }
-.card h4 { margin-bottom: 10px; color: var(--text-main); }
-.card p { color: var(--text-muted); font-size: 0.95rem; }
 
 .diagram-container {
-    background: #ffffff; 
+    background: #ffffff; /* White bg for academic papers usually works best */
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    /* In light mode, diagrams need a border to stand out against white bg */
-    border: 1px solid var(--border-color);
 }
 .responsive-img { width: 100%; height: auto; border-radius: 5px; }
-.caption { color: var(--text-muted); margin-top: 10px; font-size: 0.9rem; font-style: italic; }
+.caption { color: #333; margin-top: 10px; font-size: 0.9rem; font-style: italic; }
 
 /* Showcase (Results) */
-.showcase { padding: 50px 0; }
+/* Showcase (Results) */
+.showcase { 
+    padding: 50px 0; 
+}
 
 .showcase-item { 
+    /* Changed from display: flex to block for vertical stacking */
     display: block; 
-    margin-bottom: 100px; 
+    margin-bottom: 100px; /* Space between tasks */
 }
 
+.video-wrapper {
+    flex: 1.5;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: #000;
+}
+.video-wrapper video { width: 100%; display: block; }
+
+.tag {
+    position: absolute;
+    top: 15px; left: 15px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    backdrop-filter: blur(5px);
+}
 .desc-box { 
     margin-bottom: 25px; 
-    max-width: 800px; 
+    max-width: 800px; /* Keep text measure readable, don't stretch too wide */
 }
 
-.desc-box h3 { color: var(--text-main); margin-bottom: 8px;}
+.desc-box h5 { 
+    text-transform: uppercase; 
+    color: var(--accent-blue); 
+    margin-bottom: 10px; 
+    letter-spacing: 1px; 
+}
 
 .desc-box p { 
     font-size: 1.1rem; 
     color: var(--text-muted); 
-    border-left: 3px solid var(--accent-blue); 
+    border-left: 2px solid var(--accent-blue); 
     padding-left: 20px; 
 }
+/* BibTeX */
+.bibtex-section { background: var(--card-bg); padding: 50px 0; margin-top: 50px; }
+pre {
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    color: #d4d4d4;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    border: 1px solid #333;
+}
 
+/* Footer */
+footer { border-top: 1px solid #333; padding: 50px 0; margin-top: 0; }
+.footer-content { display: flex; justify-content: space-between; margin-bottom: 30px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; }
+.legal { color: #555; font-size: 0.9rem; }
+
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+    .showcase-item, .showcase-item.reverse { flex-direction: column; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
 /* Gallery Layout */
 .gallery-wrapper {
+    /* Changed to full width */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -257,11 +285,10 @@ h2 { color: var(--text-main); }
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: var(--card-shadow);
-    /* 把 #000 改为 var(--card-bg) 或 transparent */
-    background: var(--card-bg); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: #000;
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/9; 
 }
 
 .main-video {
@@ -272,39 +299,57 @@ h2 { color: var(--text-main); }
     transition: opacity 0.3s ease;
 }
 
+/* The fading animation class */
 .fade-out {
-    opacity: 0 !important; /* 强制完全透明 */
+    opacity: 0.5;
 }
 
 /* Thumbnail Strip */
-.thumbnail-strip-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
 .thumbnail-strip {
     display: flex;
     gap: 10px;
     overflow-x: auto;
     padding-bottom: 5px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    /* Hide Scrollbar for Chrome/Safari/Opera */
     -webkit-overflow-scrolling: touch;
 }
-.thumbnail-strip::-webkit-scrollbar { display: none; }
+
+/* NEW: Thumbnail Strip Container (For Centering) */
+.thumbnail-strip-container {
+    display: flex;
+    justify-content: center; /* <<< This centers the scrollable element */
+    width: 100%;
+    /* The container itself does not scroll, it just centers the strip */
+}
+
+.thumbnail-strip::-webkit-scrollbar {
+    display: none;
+}
+
+/* Thumbnail Strip (For Scrolling) */
+.thumbnail-strip {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto; /* Allows scrolling if items exceed container width */
+    padding-bottom: 5px;
+    max-width: 100%; /* Ensures it respects the parent's width */
+    
+    /* Scrollbar hiding (required on the scrolling element) */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    -webkit-overflow-scrolling: touch;
+}
 
 .thumb-item {
-    flex: 0 0 100px;
-    height: 56px;
+    flex: 0 0 100px; /* Width of thumbnails */
+    height: 56px;    /* Aspect ratio 16:9 approx */
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    opacity: 0.6; /* Slightly higher opacity for light mode */
+    opacity: 0.5;
     transition: all 0.3s ease;
     border: 2px solid transparent;
     position: relative;
-    background: #000; /* Background for video thumbnails */
 }
 
 .thumb-item video {
@@ -314,54 +359,23 @@ h2 { color: var(--text-main); }
 }
 
 .thumb-item:hover {
-    opacity: 0.9;
+    opacity: 0.8;
     transform: translateY(-2px);
 }
 
 .thumb-item.active {
     opacity: 1;
     border-color: var(--accent-blue);
-    box-shadow: 0 4px 10px rgba(66, 133, 244, 0.2);
+    box-shadow: 0 0 10px rgba(66, 133, 244, 0.3);
 }
 
-/* BibTeX */
-.bibtex-section { 
-    background: #f8f9fa; /* Light gray section bg */
-    padding: 50px 0; 
-    margin-top: 50px; 
-    border-top: 1px solid var(--border-color);
-}
-.bibtex-section h3 { margin-bottom: 20px; color: var(--text-main); }
-
-pre {
-    background: #ffffff; /* White bg for code */
-    padding: 20px;
-    border-radius: 10px;
-    overflow-x: auto;
-    color: var(--text-muted);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.9rem;
-    border: 1px solid var(--border-color);
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.02);
-}
-
-/* Footer */
-footer { 
-    border-top: 1px solid var(--border-color); 
-    padding: 50px 0; 
-    margin-top: 0; 
-    background: #fff;
-}
-.footer-content { display: flex; justify-content: space-between; margin-bottom: 30px; }
-.footer-logo { font-weight: bold; color: var(--text-main); }
-.footer-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; transition: color 0.2s;}
-.footer-links a:hover { color: var(--accent-blue); }
-
+/* Adjustments for mobile */
 @media (max-width: 768px) {
-    h1 { font-size: 3rem; }
-    .showcase-item, .showcase-item.reverse { flex-direction: column; }
-    .grid-2 { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    .thumbnail-strip { gap: 8px; }
-    .thumb-item { flex: 0 0 80px; height: 45px; }
+    .thumbnail-strip {
+        gap: 8px;
+    }
+    .thumb-item {
+        flex: 0 0 80px;
+        height: 45px;
+    }
 }
