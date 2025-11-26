@@ -267,7 +267,8 @@ footer { border-top: 1px solid #333; padding: 50px 0; margin-top: 0; }
 .legal { color: #555; font-size: 0.9rem; }
 
 @media (max-width: 768px) {
-    h1 { font-size: 3rem; }
+   h1 { font-size: 2.5rem; } /* Smaller size for H1 on phones */
+   .subtitle { font-size: 1.2rem; } /* Make subtitle smaller too */
     .showcase-item, .showcase-item.reverse { flex-direction: column; }
     .grid-2 { grid-template-columns: 1fr; }
     .nav-links { display: none; }
