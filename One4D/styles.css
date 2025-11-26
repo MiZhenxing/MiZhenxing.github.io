@@ -368,51 +368,11 @@ footer { border-top: 1px solid #333; padding: 50px 0; margin-top: 0; }
     border-color: var(--accent-blue);
     box-shadow: 0 0 10px rgba(66, 133, 244, 0.3);
 }
-
-/* Update your existing @media block at the bottom of styles.css */
 @media (max-width: 768px) {
-    /* Adjust Title Size */
-    h1 { 
-        font-size: 3rem; 
-    }
-
-    /* Fix Layout Stacking */
-    .showcase-item, .showcase-item.reverse { 
-        flex-direction: column; 
-    }
-    .grid-2 { 
-        grid-template-columns: 1fr; 
-    }
-    
-    /* Hide Desktop Nav Links */
-    .nav-links { 
-        display: none; 
-    }
-
-    /* --- NEW ADDITIONS FOR HERO --- */
-
-    /* 1. Reduce top padding so content doesn't start too far down */
-    .hero {
-        padding-top: 100px; 
-        min-height: auto; /* Allow height to adjust naturally on mobile */
-        padding-bottom: 40px;
-    }
-
-    /* 2. Make buttons smaller and stack nicer on mobile */
-    .cta-group {
-        gap: 10px; /* Reduce gap between buttons */
-    }
-
-    .btn-primary, .btn-secondary {
-        padding: 10px 20px; /* Slightly smaller buttons */
-        font-size: 0.9rem;
-        width: auto; /* Allow them to size naturally */
-        flex-grow: 1; /* Optional: Makes buttons stretch to fill the line evenly */
-    }
-
-    /* 3. Ensure the video container fits nicely */
-    .hero-showcase-video {
-        margin-top: 30px;
-        width: 100%;
-    }
+    h1 { font-size: 3rem; }
+    .showcase-item, .showcase-item.reverse { flex-direction: column; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .thumbnail-strip { gap: 8px; }
+    .thumb-item { flex: 0 0 80px; height: 45px; }
 }
