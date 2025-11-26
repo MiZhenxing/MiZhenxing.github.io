@@ -380,3 +380,53 @@ footer { border-top: 1px solid #333; padding: 50px 0; margin-top: 0; }
         height: 45px;
     }
 }
+
+@media (max-width: 480px) {
+    /* Adjust Hero Header Padding */
+    .hero {
+        padding-top: 80px; /* Less top padding */
+        padding-bottom: 30px; /* Less bottom padding */
+    }
+
+    /* Reduce Title Size aggressively */
+    h1 { 
+        font-size: 2.2rem; /* Reduced from 5rem (desktop) and 3rem (768px media query) */
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+    
+    /* Reduce Subtitle Size */
+    .subtitle { 
+        font-size: 1.1rem; 
+        margin-bottom: 10px;
+    }
+
+    /* Reduce Authors Text Size */
+    .authors {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    /* Stack CTA buttons vertically */
+    .cta-group {
+        flex-direction: column; /* Stack buttons instead of lining them up */
+        gap: 10px; /* Space between stacked buttons */
+        width: 100%; /* Make group take full width */
+        max-width: 300px; /* Limit button width for better appearance */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Adjust Button Padding */
+    .btn-primary {
+        padding: 10px 20px; /* Slightly smaller buttons */
+        width: 100%; /* Ensure buttons fill the max-width */
+        text-align: center;
+    }
+
+    /* Adjust the main video position */
+    .hero-showcase-video {
+        margin-top: 30px;
+        max-width: 100%; /* Allow it to use full width if needed */
+    }
+}
