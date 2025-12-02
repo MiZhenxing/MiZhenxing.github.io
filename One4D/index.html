@@ -73,7 +73,7 @@
             <h2>Unified Framework</h2>
             <div class="abstract-text">
                 <p>
-                    One4D is a unified framework for <strong>4D generation and reconstruction</strong> that can seamlessly transition between 4D generation from a <strong>single image</strong>, 4D reconstruction from a <strong>full video</strong>, and mixed generation and reconstruction from <strong>sparse frames</strong> via <strong>Unified Masked Conditioning (UMC)</strong>. With <strong>Decoupled LoRA Control (DLC)</strong>, which employs two modality-specific LoRA adapters to form decoupled computation branches for RGB frames and pointmaps, connected by lightweight, zero-initialized control links that gradually learn mutual pixel-level consistency, One4D produces high-quality RGB frames and accurate pointmaps across both generation and reconstruction tasks. 
+                    One4D is a unified framework for <strong>4D generation and reconstruction</strong> that can seamlessly transition between 4D generation from a <strong>single image</strong>, 4D reconstruction from a <strong>full video</strong>, mixed generation and reconstruction from <strong>sparse frames</strong> and 4D generation from a <strong>text prompt</strong> via <strong>Unified Masked Conditioning (UMC)</strong>. With <strong>Decoupled LoRA Control (DLC)</strong>, which employs two modality-specific LoRA adapters to form decoupled computation branches for RGB frames and pointmaps, connected by lightweight, zero-initialized control links that gradually learn mutual pixel-level consistency, One4D produces high-quality RGB frames and accurate pointmaps across both generation and reconstruction tasks. 
                 </p>
             </div>
         </div>
@@ -94,7 +94,7 @@
                 <div class="card">
                     <div class="icon">🎛️</div>
                     <h4>Unified Masked Conditioning</h4>
-                    <p>Enables seamlessly transition between 4D generation from a <strong>single image</strong>, 4D reconstruction from a <strong>full video</strong>, and mixed generation and reconstruction from <strong>sparse frames</strong> using a single unified model.</p>
+                    <p>Enables seamlessly transition between 4D generation from a <strong>single image</strong>, 4D reconstruction from a <strong>full video</strong>, mixed generation and reconstruction from <strong>sparse frames</strong> and 4D generation from a <strong>text prompt</strong> using a single unified model.</p>
                 </div>
                 <div class="card">
                     <div class="icon">🧩</div>
@@ -213,6 +213,31 @@
                         </div>
                         <div class="thumb-item" data-src="./assets/videos/cut_16.mp4" data-target="vid-full">
                             <video autoplay muted loop playsinline preload="metadata" src="./assets/videos/cut_16.mp4#t=0.1"></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="showcase-item">
+                <div class="desc-box">
+                    <h3>Text to 4D</h3>
+                    <p>Generating a consistent 4D scene from a pure text prompt, ensuring high-quality RGB frames and consistent geometry for the entire 4D output.</p>
+                </div>
+
+                <div class="gallery-wrapper">
+                    <div class="main-video-container">
+                        <video id="vid-full" autoplay muted loop playsinline class="main-video">
+                            <source src="./assets/videos/cut_19.mp4" type="video/mp4">
+                        </video>
+                        <!-- <div class="tag">Full Video → 4D</div> -->
+                    </div>
+
+                    <div class="thumbnail-strip-container"> <div class="thumbnail-strip">
+                        <div class="thumb-item active" data-src="./assets/videos/cut_19.mp4" data-target="vid-full">
+                            <video autoplay muted loop playsinline preload="metadata" src="./assets/videos/cut_19.mp4#t=0.1"></video>
+                        </div>
+                        <div class="thumb-item" data-src="./assets/videos/cut_20.mp4" data-target="vid-full">
+                            <video autoplay muted loop playsinline preload="metadata" src="./assets/videos/cut_20.mp4#t=0.1"></video>
                         </div>
                     </div>
                 </div>
