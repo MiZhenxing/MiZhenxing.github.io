@@ -1,0 +1,24 @@
+# Dependencies
+/node_modules
+/vendor
+/jspm_packages
+
+# Build artifacts
+/dist/
+/build/
+/tmp/
+*.log
+*.cache
+*.tmp
+*.class
+
+# Environment variables and credentials
+.env
+.flaskenv
+config.secret.json
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
