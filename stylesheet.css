@@ -129,3 +129,54 @@ name {
 span.highlight {
   background-color: #ffffd0;
 }
+
+.older-news {
+  margin: 10px 0 0;
+}
+
+.older-news summary {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-left: 40px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.older-news .navlist {
+  margin-left: 0;
+}
+
+.older-news[open] summary {
+  margin-bottom: 10px;
+}
+
+.older-news summary::-webkit-details-marker {
+  display: none;
+}
+
+.news-toggle {
+  color: #1772d0;
+  font-weight: 700;
+}
+
+.older-news summary:hover .news-toggle {
+  color: #f09228;
+}
+
+.news-hint {
+  color: #777;
+  font-size: 13px;
+}
+
+.news-toggle-less {
+  display: none;
+}
+
+.older-news[open] .news-toggle-more {
+  display: none;
+}
+
+.older-news[open] .news-toggle-less {
+  display: inline;
+}
