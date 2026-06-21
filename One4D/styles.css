@@ -207,7 +207,8 @@ h1 {
     overflow: hidden;
 }
 
-.hero-teaser img {
+.hero-teaser img,
+.hero-teaser video {
     width: 100%;
     display: block;
 }
